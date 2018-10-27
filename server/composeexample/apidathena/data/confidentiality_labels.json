@@ -1,0 +1,26 @@
+[
+  {
+    "id": "1",
+    "name": "Top Secret"
+  },
+  {
+    "id": "2",
+    "name": "Secret"
+  },
+  {
+    "id": "3",
+    "name": "Confidential"
+  },
+  {
+    "id": "6",
+    "name": "Private"
+  },
+  {
+    "id": "4",
+    "name": "Internal"
+  },
+  {
+    "id": "5",
+    "name": "Public"
+  }
+]

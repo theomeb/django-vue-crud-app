@@ -1,0 +1,297 @@
+[
+  {
+    "name": "Afrikaans",
+    "short_name": "af",
+    "total_docs": 76
+  },
+  {
+    "name": "Aragonese",
+    "short_name": "an",
+    "total_docs": 119
+  },
+  {
+    "name": "Arabic",
+    "short_name": "ar",
+    "total_docs": 21
+  },
+  {
+    "name": "Asturian",
+    "short_name": "ast",
+    "total_docs": 116
+  },
+  {
+    "name": "Belarusian",
+    "short_name": "be",
+    "total_docs": 1
+  },
+  {
+    "name": "Bulgarian",
+    "short_name": "bg",
+    "total_docs": 18
+  },
+  {
+    "name": "Bengali",
+    "short_name": "bn",
+    "total_docs": 205
+  },
+  {
+    "name": "Breton",
+    "short_name": "br",
+    "total_docs": 98
+  },
+  {
+    "name": "Catalan",
+    "short_name": "ca",
+    "total_docs": 221
+  },
+  {
+    "name": "Czech",
+    "short_name": "cs",
+    "total_docs": 64
+  },
+  {
+    "name": "Welsh",
+    "short_name": "cy",
+    "total_docs": 465
+  },
+  {
+    "name": "Danish",
+    "short_name": "da",
+    "total_docs": 106
+  },
+  {
+    "name": "German",
+    "short_name": "de",
+    "total_docs": 5917
+  },
+  {
+    "name": "Greek",
+    "short_name": "el",
+    "total_docs": 29
+  },
+  {
+    "name": "English",
+    "short_name": "en",
+    "total_docs": 425520
+  },
+  {
+    "name": "Spanish",
+    "short_name": "es",
+    "total_docs": 1833
+  },
+  {
+    "name": "Estonian",
+    "short_name": "et",
+    "total_docs": 76
+  },
+  {
+    "name": "Basque",
+    "short_name": "eu",
+    "total_docs": 58
+  },
+  {
+    "name": "Persian",
+    "short_name": "fa",
+    "total_docs": 3
+  },
+  {
+    "name": "Finnish",
+    "short_name": "fi",
+    "total_docs": 57
+  },
+  {
+    "name": "French",
+    "short_name": "fr",
+    "total_docs": 3133
+  },
+  {
+    "name": "Irish",
+    "short_name": "ga",
+    "total_docs": 132
+  },
+  {
+    "name": "Gallegan",
+    "short_name": "gl",
+    "total_docs": 96
+  },
+  {
+    "name": "Hebrew",
+    "short_name": "he",
+    "total_docs": 3
+  },
+  {
+    "name": "Croatian",
+    "short_name": "hr",
+    "total_docs": 62
+  },
+  {
+    "name": "Haitian",
+    "short_name": "ht",
+    "total_docs": 71
+  },
+  {
+    "name": "Hungarian",
+    "short_name": "hu",
+    "total_docs": 83
+  },
+  {
+    "name": "Indonesian",
+    "short_name": "id",
+    "total_docs": 123
+  },
+  {
+    "name": "Icelandic",
+    "short_name": "is",
+    "total_docs": 43
+  },
+  {
+    "name": "Italian",
+    "short_name": "it",
+    "total_docs": 621
+  },
+  {
+    "name": "Japanese",
+    "short_name": "ja",
+    "total_docs": 1
+  },
+  {
+    "name": "Korean",
+    "short_name": "ko",
+    "total_docs": 16
+  },
+  {
+    "name": "Lithuanian",
+    "short_name": "lt",
+    "total_docs": 22
+  },
+  {
+    "name": "Latvian",
+    "short_name": "lv",
+    "total_docs": 12
+  },
+  {
+    "name": "Malayalam",
+    "short_name": "ml",
+    "total_docs": 6
+  },
+  {
+    "name": "Malay",
+    "short_name": "ms",
+    "total_docs": 212
+  },
+  {
+    "name": "Maltese",
+    "short_name": "mt",
+    "total_docs": 167
+  },
+  {
+    "name": "Nepali",
+    "short_name": "ne",
+    "total_docs": 2
+  },
+  {
+    "name": "Dutch",
+    "short_name": "nl",
+    "total_docs": 604
+  },
+  {
+    "name": "Norwegian",
+    "short_name": "no",
+    "total_docs": 57
+  },
+  {
+    "name": "Occitan",
+    "short_name": "oc",
+    "total_docs": 48
+  },
+  {
+    "name": "Polish",
+    "short_name": "pl",
+    "total_docs": 222
+  },
+  {
+    "name": "Portuguese",
+    "short_name": "pt",
+    "total_docs": 286
+  },
+  {
+    "name": "Romanian",
+    "short_name": "ro",
+    "total_docs": 305
+  },
+  {
+    "name": "Russian",
+    "short_name": "ru",
+    "total_docs": 390
+  },
+  {
+    "name": "Slovak",
+    "short_name": "sk",
+    "total_docs": 36
+  },
+  {
+    "name": "Slovenian",
+    "short_name": "sl",
+    "total_docs": 28
+  },
+  {
+    "name": "Somali",
+    "short_name": "so",
+    "total_docs": 488
+  },
+  {
+    "name": "Albanian",
+    "short_name": "sq",
+    "total_docs": 53
+  },
+  {
+    "name": "Swedish",
+    "short_name": "sv",
+    "total_docs": 109
+  },
+  {
+    "name": "Swahili",
+    "short_name": "sw",
+    "total_docs": 58
+  },
+  {
+    "name": "Thai",
+    "short_name": "th",
+    "total_docs": 118
+  },
+  {
+    "name": "Tagalog",
+    "short_name": "tl",
+    "total_docs": 158
+  },
+  {
+    "name": "Turkish",
+    "short_name": "tr",
+    "total_docs": 83
+  },
+  {
+    "name": "Ukrainian",
+    "short_name": "uk",
+    "total_docs": 11
+  },
+  {
+    "name": "Urdu",
+    "short_name": "ur",
+    "total_docs": 2
+  },
+  {
+    "name": "Vietnamese",
+    "short_name": "vi",
+    "total_docs": 328
+  },
+  {
+    "name": "Chinese (China)",
+    "short_name": "zh-cn",
+    "total_docs": 13
+  },
+  {
+    "name": "Chinese (Taiwan)",
+    "short_name": "zh-tw",
+    "total_docs": 12
+  }
+]
