@@ -1,3 +1,26 @@
+#BACK
 /server/composeexample/__pycache__
 /server/composeexample/apidathena/__pycache__
 /server/composeexample/apidathena/migrations
+
+#FRONT
+client/dathena-client/.DS_Store
+client/dathena-client/node_modules
+
+# local env files
+client/dathena-client/.env.local
+client/dathena-client/.env.*.local
+
+# Log files
+client/dathena-client/npm-debug.log*
+client/dathena-client/yarn-debug.log*
+client/dathena-client/yarn-error.log*
+
+# Editor directories and files
+client/dathena-client/.idea
+client/dathena-client/.vscode
+client/dathena-client/*.suo
+client/dathena-client/*.ntvs*
+client/dathena-client/*.njsproj
+client/dathena-client/*.sln
+client/dathena-client/*.sw*
