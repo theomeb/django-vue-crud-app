@@ -3,12 +3,13 @@ from django.http import HttpResponse
 import json
 
 from rest_framework import generics
-from .models import Confidentiality
-from .serializers import ConfidentialitySerializer
+from .models import Confidentiality, Language, Doctype
+from .serializers import ConfidentialitySerializer, LanguageSerializer, DoctypeSerializer
 
-# Create your views here.
+# Main endpoint
 def index(request):
-    return HttpResponse("Hey there, you're on the apidathena !")
+    name = request.GET.get('name', 'buddy')
+    return HttpResponse("Hey there "+name+", you're on the apidathena ! Get your data on /confidentiality, /languages and /doctype routes.")
 
 class ListConfidentialityView(generics.ListAPIView):
     """
@@ -17,19 +18,41 @@ class ListConfidentialityView(generics.ListAPIView):
     queryset = Confidentiality.objects.all()
     serializer_class = ConfidentialitySerializer
 
-def init(request):
+class ListLanguageView(generics.ListAPIView):
+    """
+    Provides a get method handler.
+    """
+    queryset = Language.objects.all()
+    serializer_class = LanguageSerializer
+
+class ListDoctypeView(generics.ListAPIView):
+    """
+    Provides a get method handler.
+    """
+    queryset = Doctype.objects.all()
+    serializer_class = DoctypeSerializer
+
+def initTable(table, file):
     # Read the JSON
-    confidentiality_data = json.load(open('/code/composeexample/apidathena/data/confidentiality_data.json'))
-
-    len_data = 0
+    data = json.load(open('/code/composeexample/apidathena/data/'+file))
+    # Clear tables
+    table.objects.all().delete()
     # Create a Django model object for each object in the JSON 
-    for confidentiality in confidentiality_data:
-        Confidentiality.objects.create(name=confidentiality['name'], total_docs=confidentiality['total_docs'])
-        len_data += 1
+    if table == Language: 
+        for row in data:
+            table.objects.create(short_name=row['short_name'], name=row['name'], total_docs=row['total_docs'])
+    else: 
+        for row in data:
+            table.objects.create(name=row['name'], total_docs=row['total_docs'])
 
-    # No replicated data
-    Confidentiality.objects.filter(id__gt=len_data).delete()
+    return len(data)
 
-    return HttpResponse("New rows created in Confidentiality with %i elements"%len_data)
+def init(request):
+    len_data_confidentiality = initTable(Confidentiality, 'confidentiality_data.json')
+    len_data_language = initTable(Language, 'language_data.json')
+    len_data_doctype = initTable(Doctype, 'doctype_data.json')
+
+    response = "Table initialized with %i rows in Confidentiality, %i rows in Language and %i rows in Doctype."%(len_data_confidentiality, len_data_language, len_data_doctype)
+    return HttpResponse(response)
 
 
