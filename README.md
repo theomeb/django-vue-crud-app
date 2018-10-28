@@ -9,8 +9,6 @@ In the following lines, I'll explain how you can launch my app and what I've don
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
-
 Pull this repo 
 ```
 mkdir test && cd test
@@ -70,7 +68,7 @@ Back API is available at `localhost:8080/apidathena` and front app is running on
 #### Front 
 
 - I've created one component `DathenaBoard.vue` in which all the code for displaying data is made. 
-- I used table vuetify component to display easily data.
+- I used vuetify table component to display data easily.
 - In `<script>` part, you can see all the javascript logic to get data or trigger the API. 
 
 ### Possible improvements
