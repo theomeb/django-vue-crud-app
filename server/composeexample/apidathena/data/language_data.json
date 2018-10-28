@@ -120,6 +120,11 @@
     "total_docs": 3
   },
   {
+    "name": "Hindi",
+    "short_name": "hi",
+    "total_docs": 0
+  },
+  {
     "name": "Croatian",
     "short_name": "hr",
     "total_docs": 62
@@ -168,6 +173,11 @@
     "name": "Latvian",
     "short_name": "lv",
     "total_docs": 12
+  },
+  {
+    "name": "Macedonian",
+    "short_name": "mk",
+    "total_docs": 0
   },
   {
     "name": "Malayalam",
