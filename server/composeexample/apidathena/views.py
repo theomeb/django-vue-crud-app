@@ -9,7 +9,7 @@ from .serializers import ConfidentialitySerializer, LanguageSerializer, DoctypeS
 # Main endpoint
 def index(request):
     name = request.GET.get('name', 'buddy')
-    return HttpResponse("<center><h2>Hey there "+name+"!</h2> <p>You're on the apidathena ! Get your data on <b>/confidentiality, /languages</b> and <b>/doctype</b> routes.</p></center>")
+    return HttpResponse("<center><h2>Hey there "+name+"!</h2> <p>You're on the apidathena ! Get your data on <b>/confidentiality, /languages</b> and <b>/doctype</b> routes.</p><p>Wann to manage the API ? Execute <i>python manage.py createsuperuser --email admin@example.com --username admin</i> in your docker and go on <b>/admin</b> with your credentials.</p></center>")
 
 class ListConfidentialityView(generics.ListAPIView):
     """
