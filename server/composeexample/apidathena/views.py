@@ -9,7 +9,7 @@ from .serializers import ConfidentialitySerializer, LanguageSerializer, DoctypeS
 # Main endpoint
 def index(request):
     name = request.GET.get('name', 'buddy')
-    return HttpResponse("Hey there "+name+", you're on the apidathena ! Get your data on /confidentiality, /languages and /doctype routes.")
+    return HttpResponse("<center><h2>Hey there "+name+"!</h2> <p>You're on the apidathena ! Get your data on <b>/confidentiality, /languages</b> and <b>/doctype</b> routes.</p></center>")
 
 class ListConfidentialityView(generics.ListAPIView):
     """

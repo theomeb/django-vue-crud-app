@@ -1,28 +1,37 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-app>
+    <v-toolbar app>
+      <v-toolbar-title class="headline text-uppercase">
+        <span>Dathena</span>
+        <span class="font-weight-light">Dashboard</span>
+      </v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-btn
+        flat
+        href="http://localhost:8000/apidathena/"
+        target="_blank"
+      >
+        <span class="mr-2">Fan of JSON ? Get directly on the API !</span>
+      </v-btn>
+    </v-toolbar>
+
+    <v-content>
+      <DathenaBoard msg="Welcome on Dathena Board"/>
+    </v-content>
+  </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
+import DathenaBoard from './components/DathenaBoard.vue';
 
 export default {
-  name: 'app',
+  name: 'App',
   components: {
-    HelloWorld,
+    DathenaBoard,
+  },
+  data() {
+    return {
+    };
   },
 };
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>

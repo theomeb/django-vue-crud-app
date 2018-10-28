@@ -20,7 +20,4 @@ from django.urls import path, re_path, include
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'apidathena/', include('composeexample.apidathena.urls')),
-    re_path('api/(?P<version>(v1|v2))/', include('composeexample.apidathena.urls'))
-
-
 ]
