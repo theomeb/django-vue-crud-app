@@ -41,6 +41,7 @@
             </v-card-actions>
           </v-card>
         </v-dialog>
+        <v-btn color="secondary" dark class="mb-2" @click.native="init"> Init database</v-btn> 
         <v-spacer></v-spacer>
         <v-text-field
           v-model="search"
@@ -97,7 +98,7 @@ export default {
     return {
       dialog: false,
       choices: ['Language', 'DocType', 'Confidentiality'],
-      choiceSelected: '',
+      choiceSelected: 'language',
       search: '',
       headers: [
         {
@@ -196,6 +197,10 @@ export default {
         this.triggerBase(path);
       }
       this.close();
+    },
+    init () {
+      let path = ('http://localhost:8000/apidathena/init');
+      this.triggerBase(path);
     }
   },
   created() {
