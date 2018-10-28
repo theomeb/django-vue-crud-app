@@ -166,11 +166,11 @@ export default {
     },
     close() {
       this.dialog = false;
+      this.getData(this.choiceSelected);
       setTimeout(() => {
         this.editedItem = Object.assign({}, this.defaultItem);
         this.editedIndex = -1;
       }, 300);
-      this.getData(this.choiceSelected);
     },
     save() {
       const tableName = this.choiceSelected.toLowerCase();
