@@ -3,7 +3,16 @@
     <v-app id="inspire">
     <v-card>
       <v-card-title>
-        Nutrition
+        <v-layout wrap align-center class="select-box__container">
+        <v-flex xs12 sm6 d-flex>
+          <v-select
+            :items="choices"
+            label="Select your data"
+            outline
+            v-model="choiceSelected"
+          ></v-select>
+        </v-flex>
+        </v-layout>
         <v-spacer></v-spacer>
         <v-text-field
           v-model="search"
@@ -15,14 +24,14 @@
       </v-card-title>
       <v-data-table
         :headers="headers"
-        :items="desserts"
+        :items="items"
         :search="search"
       >
         <template slot="items" slot-scope="props">
           <td>{{ props.item.id }}</td>
-          <td class="text-xs-right">{{ props.item.name }}</td>
-          <td class="text-xs-right">{{ props.item.short_name }}</td>
-          <td class="text-xs-right">{{ props.item.total_docs }}</td>
+          <td class="text-xs-left">{{ props.item.name }}</td>
+          <td class="text-xs-left">{{ props.item.short_name }}</td>
+          <td class="text-xs-left">{{ props.item.total_docs }}</td>
         </template>
         <v-alert slot="no-results" :value="true" color="error" icon="warning">
           Your search for "{{ search }}" found no results.
@@ -34,63 +43,57 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   name: 'DathenaBoard',
   props: {
     msg: String,
   },
-  data: function(){
+  data() {
     return {
+      choices: ['Language', 'DocType', 'Confidentiality'],
+      choiceSelected: '',
       search: '',
       headers: [
         {
           text: 'ID',
           align: 'left',
-          value: 'id'
+          value: 'id',
         },
         { text: 'Name', value: 'name' },
         { text: 'Short Name (for languages)', value: 'short_name' },
-        { text: 'Total of documents', value: 'total_docs' }
+        { text: 'Total of documents', value: 'total_docs' },
       ],
-      desserts: [
-        {
-          "name": "Afrikaans",
-          "short_name": "af",
-          "total_docs": 76
-        },
-        {
-          "name": "Aragonese",
-          "short_name": "an",
-          "total_docs": 119
-        },
-        {
-          "name": "Arabic",
-          "short_name": "ar",
-          "total_docs": 21
-        },
-        {
-          "name": "Asturian",
-          "short_name": "ast",
-          "total_docs": 116
-        },
-        {
-          "name": "Belarusian",
-          "short_name": "be",
-          "total_docs": 1
-        },
-        {
-          "name": "Bulgarian",
-          "short_name": "bg",
-          "total_docs": 18
-        },
-        {
-          "name": "Bengali",
-          "short_name": "bn",
-          "total_docs": 205
-        },
-      ]
+      items: [],
+    };
+  },
+  methods: {
+    getData(table) {
+      const path = ('http://localhost:8000/apidathena/').concat(table.toLowerCase()).concat('/?format=json');
+
+      axios.get(path)
+        .then((res) => {
+          this.items = res.data
+        })
+        .catch((error) => {
+          // eslint-disable-next-line
+          console.error(error);
+        });
+    },
+  },
+  created() {
+  },
+  watch: {
+    choiceSelected: function(newValue, oldValue) {
+      this.getData(newValue)
     }
-  }
+  },
 };
 </script>
 
+<style>
+.select-box__container {
+  padding-top: 30px;
+}
+</style>
