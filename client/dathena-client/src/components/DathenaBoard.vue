@@ -141,7 +141,6 @@ export default {
         });
     },
     editItem(item) {
-      console.log('edit'+item.name);
       this.editedIndex = this.items.indexOf(item)
       this.editedItem = Object.assign({}, item)
       this.dialog = true
@@ -149,8 +148,9 @@ export default {
     deleteItem (item) {
       const tableName = this.choiceSelected.toLowerCase();
       const name = item.name;
-      let path = ('http://localhost:8000/apidathena/delete/?table=').concat(tableName).concat('%name=').concat(name)
+      let path = ('http://localhost:8000/apidathena/delete/?table=').concat(tableName).concat('&name=').concat(name)
       confirm('Are you sure you want to delete this item?') && this.triggerBase(path);
+      this.getData(tableName);
     },
     triggerBase (path) {
       axios.get(path)
@@ -167,32 +167,35 @@ export default {
         this.editedItem = Object.assign({}, this.defaultItem)
         this.editedIndex = -1
       }, 300)
+      this.getData(this.choiceSelected);
+
     },
     save () {
       const tableName = this.choiceSelected.toLowerCase()
       if (this.editedIndex > -1) {
+        const nameToChanged = this.items[this.editedIndex].name
         const name = this.editedItem.name
         const total_docs = this.editedItem.total_docs
-        let path = ('http://localhost:8000/apidathena/edit/?table=').concat(tableName).concat('%name=').concat(name).concat('%total_docs').concat(total_docs);
+        let path = ('http://localhost:8000/apidathena/edit/?table=').concat(tableName).concat('&name_to_changed=').concat(nameToChanged).concat('&name=').concat(name).concat('&total_docs=').concat(total_docs);
         
         if (tableName=="language") {
           const short_name = this.editedItem.short_name
-          path = path.concat(total_docs).concat('%short_name=').concat(short_name);
+          path = path.concat('&short_name=').concat(short_name);
         }
         this.triggerBase(path);
 
       } else {
         const name = this.editedItem.name
         const total_docs = this.editedItem.total_docs
-        let path = ('http://localhost:8000/apidathena/create/?table=').concat(tableName).concat('%name=').concat(name).concat('%total_docs').concat(total_docs);
+        let path = ('http://localhost:8000/apidathena/create/?table=').concat(tableName).concat('&name=').concat(name).concat('&total_docs=').concat(total_docs);
 
         if (tableName=="language") {
           const short_name = this.editedItem.short_name
-          path = path.concat(total_docs).concat('%short_name=').concat(short_name);
+          path = path.concat(total_docs).concat('&short_name=').concat(short_name);
         }
         this.triggerBase(path);
       }
-      this.close() 
+      this.close();
     }
   },
   created() {

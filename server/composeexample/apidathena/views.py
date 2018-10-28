@@ -55,4 +55,49 @@ def init(request):
     response = "Table initialized with %i rows in Confidentiality, %i rows in Language and %i rows in Doctype."%(len_data_confidentiality, len_data_language, len_data_doctype)
     return HttpResponse(response)
 
+#For actions
+table_mapping = {'language': Language, 'doctype': Doctype, 'confidentiality': Confidentiality}
 
+def delete(request):
+    table_param = request.GET.get('table', '')
+    name_param = request.GET.get('name', '')
+
+    if table_param in table_mapping:
+        (table_mapping[table_param]).objects.filter(name=name_param).delete()
+        response = "Item with name %s in table %s deleted."%(name_param, table_param.upper())
+        return HttpResponse(response)
+
+    return HttpResponse("Bad params to delete the item !")
+
+def create(request):
+    table_param = request.GET.get('table', '')
+    name_param = request.GET.get('name', '')
+    total_docs_param = request.GET.get('total_docs', '')
+
+    if table_param in table_mapping:
+        if table_param=='language':
+            short_name_param = request.GET.get('short_name', '')
+            Language.objects.create(short_name=short_name_param ,name=name_param, total_docs=total_docs_param)
+        else :
+            (table_mapping[table_param]).objects.create(name=name_param, total_docs=total_docs_param)
+        response = "Item with name %s in table %s created."%(name_param.upper(), table_param.upper())
+        return HttpResponse(response)
+
+    return HttpResponse("Bad params to create the item !")
+
+def edit(request):
+    table_param = request.GET.get('table', '')
+    name_to_changed_param = request.GET.get('name_to_changed', '')
+    name_param = request.GET.get('name', '')
+    total_docs_param = request.GET.get('total_docs', '')
+
+    if table_param in table_mapping:
+        if table_param=='language':
+            short_name_param = request.GET.get('short_name', '')
+            Language.objects.filter(name=name_to_changed_param).update(short_name=short_name_param ,name=name_param, total_docs=total_docs_param)
+        else :
+            (table_mapping[table_param]).objects.filter(name=name_to_changed_param).update(name=name_param, total_docs=(total_docs_param))
+        response = "Item with name %s in table %s edited."%(name_param.upper(), table_param.upper())
+        return HttpResponse(response)
+
+    return HttpResponse("Bad params to edit the item !")
