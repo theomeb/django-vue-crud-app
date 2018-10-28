@@ -26,10 +26,12 @@
                     <v-text-field v-model="editedItem.name" label="Name"></v-text-field>
                   </v-flex>
                   <v-flex xs12 sm6 md4>
-                    <v-text-field v-model="editedItem.short_name" label="Short name (if language)"></v-text-field>
+                    <v-text-field v-model="editedItem.short_name" label="Short name (if language)">
+                    </v-text-field>
                   </v-flex>
                   <v-flex xs12 sm6 md4>
-                    <v-text-field v-model="editedItem.total_docs" label="Total of documents"></v-text-field>
+                    <v-text-field v-model="editedItem.total_docs" label="Total of documents">
+                    </v-text-field>
                   </v-flex>
                 </v-layout>
               </v-container>
@@ -41,7 +43,7 @@
             </v-card-actions>
           </v-card>
         </v-dialog>
-        <v-btn color="secondary" dark class="mb-2" @click.native="init"> Init database</v-btn> 
+        <v-btn color="secondary" dark class="mb-2" @click.native="init"> Init database</v-btn>
         <v-spacer></v-spacer>
         <v-text-field
           v-model="search"
@@ -122,13 +124,13 @@ export default {
         name: '',
         short_name: 0,
         total_docs: 0,
-      }
-      };
+      },
+    };
   },
   computed: {
-    formTitle () {
-          return this.editedIndex === -1 ? 'New Item' : 'Edit Item'
-        }
+    formTitle() {
+      return this.editedIndex === -1 ? 'New Item' : 'Edit Item';
+    },
   },
   methods: {
     getData(table) {
@@ -142,66 +144,68 @@ export default {
         });
     },
     editItem(item) {
-      this.editedIndex = this.items.indexOf(item)
-      this.editedItem = Object.assign({}, item)
-      this.dialog = true
+      this.editedIndex = this.items.indexOf(item);
+      this.editedItem = Object.assign({}, item);
+      this.dialog = true;
     },
-    deleteItem (item) {
+    deleteItem(item) {
       const tableName = this.choiceSelected.toLowerCase();
       const name = item.name;
-      let path = ('http://localhost:8000/apidathena/delete/?table=').concat(tableName).concat('&name=').concat(name)
+      const path = ('http://localhost:8000/apidathena/delete/?table=').concat(tableName).concat('&name=').concat(name);
       confirm('Are you sure you want to delete this item?') && this.triggerBase(path);
       this.getData(tableName);
     },
-    triggerBase (path) {
+    triggerBase(path) {
       axios.get(path)
         .then((res) => {
-          console.log(res.data)
+          console.log(res.data);
         })
         .catch((error) => {
           console.error(error);
         });
     },
-    close () {
-      this.dialog = false
+    close() {
+      this.dialog = false;
       setTimeout(() => {
-        this.editedItem = Object.assign({}, this.defaultItem)
-        this.editedIndex = -1
-      }, 300)
+        this.editedItem = Object.assign({}, this.defaultItem);
+        this.editedIndex = -1;
+      }, 300);
       this.getData(this.choiceSelected);
-
     },
-    save () {
-      const tableName = this.choiceSelected.toLowerCase()
+    save() {
+      const tableName = this.choiceSelected.toLowerCase();
       if (this.editedIndex > -1) {
-        const nameToChanged = this.items[this.editedIndex].name
-        const name = this.editedItem.name
-        const total_docs = this.editedItem.total_docs
-        let path = ('http://localhost:8000/apidathena/edit/?table=').concat(tableName).concat('&name_to_changed=').concat(nameToChanged).concat('&name=').concat(name).concat('&total_docs=').concat(total_docs);
-        
-        if (tableName=="language") {
-          const short_name = this.editedItem.short_name
-          path = path.concat('&short_name=').concat(short_name);
+        const nameToChanged = this.items[this.editedIndex].name;
+        const name = this.editedItem.name;
+        const totalDocs = this.editedItem.total_docs;
+        let path = ('http://localhost:8000/apidathena/edit/?table=').concat(tableName).concat('&name_to_changed=').concat(nameToChanged).concat('&name=')
+          .concat(name)
+          .concat('&total_docs=')
+          .concat(totalDocs);
+
+        if (tableName === 'language') {
+          const shortName = this.editedItem.short_name;
+          path = path.concat('&short_name=').concat(shortName);
         }
         this.triggerBase(path);
-
       } else {
-        const name = this.editedItem.name
-        const total_docs = this.editedItem.total_docs
-        let path = ('http://localhost:8000/apidathena/create/?table=').concat(tableName).concat('&name=').concat(name).concat('&total_docs=').concat(total_docs);
+        const name = this.editedItem.name;
+        const totalDocs = this.editedItem.total_docs;
+        let path = ('http://localhost:8000/apidathena/create/?table=').concat(tableName).concat('&name=').concat(name).concat('&total_docs=')
+          .concat(totalDocs);
 
-        if (tableName=="language") {
-          const short_name = this.editedItem.short_name
-          path = path.concat(total_docs).concat('&short_name=').concat(short_name);
+        if (tableName === 'language') {
+          const shortName = this.editedItem.short_name;
+          path = path.concat('&short_name=').concat(shortName);
         }
         this.triggerBase(path);
       }
       this.close();
     },
-    init () {
-      let path = ('http://localhost:8000/apidathena/init');
+    init() {
+      const path = ('http://localhost:8000/apidathena/init');
       this.triggerBase(path);
-    }
+    },
   },
   created() {
   },
@@ -209,8 +213,8 @@ export default {
     choiceSelected(newValue) {
       this.getData(newValue);
     },
-    dialog (val) {
-      val || this.close()
+    dialog(val) {
+      val || this.close();
     },
   },
 };
