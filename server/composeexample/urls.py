@@ -19,5 +19,5 @@ from django.urls import path, re_path, include
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'apidathena/', include('composeexample.apidathena.urls')),
+    url(r'apiemoeth/', include('composeexample.apiemoeth.urls')),
 ]

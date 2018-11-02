@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Email",
+    "total_docs": 18
+  },
+  {
+    "name": "Excel",
+    "total_docs": 57506
+  },
+  {
+    "name": "Others",
+    "total_docs": 77845
+  },
+  {
+    "name": "PDF",
+    "total_docs": 179296
+  },
+  {
+    "name": "Power Point",
+    "total_docs": 45897
+  },
+  {
+    "name": "Word",
+    "total_docs": 82655
+  }
+]

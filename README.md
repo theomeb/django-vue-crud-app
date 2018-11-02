@@ -1,8 +1,9 @@
-# Technical test for dathena
+# Base application template
+## Dockerized Django REST back - VueJS front
 
-This technical test consists in a UI platform which consumes back API to display data.
+You often need to have a init template to launch a basic application which uses a front UI which displays data fetched from a back framework. Looking for this kind of template on Google, I didn't find what I needed, so I created it.
 
-In the following lines, I'll explain how you can launch my app and what I've done to build this app.
+In the following lines, I'll explain how you can launch my app and how it is structured. 
 
 ## Getting Started
 ![](app-gif.gif)
@@ -25,7 +26,7 @@ docker-compose up --build
 
 Install front app
 ```
-cd ../client/dathena-client
+cd ../client/emoeth-client
 npm install
 ```
 
@@ -34,24 +35,17 @@ Launch front application
 npm run serve
 ```
 
-Back API is available at `localhost:8080/apidathena` and front app is running on `localhost:8000`
-
-## What I've done
-
-- First, I made a plan of what needed to be done to succeed in building this app. To do so, I used Trello to set up the architecture and the tasks I had to do to implement it. *If you're interested to see it, I can grant you access to it, just ask me !*
-
-    - This plan was made of three big parts : the first one was setting the back part, i.e a **dockerized Django REST app** as required, then I needed to connect it to a database (I've chosen **PostGreSQL**) and ultimately, I had to set up a UI interface (I've taken **VueJS** as front framework, with **Vuetify** as components library).
-
-    - I've then followed the steps I made myself to always be clear on where I was and what I had to do to continue. 
-
-- I used git and Github to make clear commits along the way. 
+Back API is available at `localhost:8080/apiemoeth` and front app is running on `localhost:8000`
 
 ### Architecture
+The front UI consumes API routes of a dockerized Django REST back using PostGreSQL as database.
+The database consists in three tables that gather data on document type, on language and on confidentiality.
+
 #### Back
 
-- I've created models to store the provided json files into tables. The route `apidathena/init/` initialize the tables with the JSON data files. 
+- I've created models to store the provided json files into tables. The route `apiemoeth/init/` initialize the tables with the JSON data files. 
 - CORS is enabled.
-- I've created routes to retrieve data from the three databases and routes to make actions on these databases, here is a sum-up of exposed API endpoints `apidathena/<route>`: 
+- I've created routes to retrieve data from the three databases and routes to make actions on these databases, here is a sum-up of exposed API endpoints `apiemoeth/<route>`: 
 
 | Routes                | Role                          | Parameters                                             | Response              |
 |-----------------------|-------------------------------|--------------------------------------------------------|-----------------------|
@@ -63,11 +57,11 @@ Back API is available at `localhost:8080/apidathena` and front app is running on
 | `GET /delete`         | Delete one row in a table     | table, name                                            | Success/Error message |
 | `GET /`               | Entry API                     | name=YourName                                          | Welcome page          |
 
-- If you want to manage the data directly with Django REST, exec `python manage.py createsuperuser --email admin@example.com --username admin` in the docker, set your password and get on `/apidathena/admin` with your credentials. 
+- If you want to manage the data directly with Django REST, exec `python manage.py createsuperuser --email admin@example.com --username admin` in the docker, set your password and get on `/apiemoeth/admin` with your credentials. 
 
 #### Front 
 
-- I've created one component `DathenaBoard.vue` in which all the code for displaying data is made. 
+- I've created one component `Board.vue` in which all the code for displaying data is made. 
 - I used vuetify table component to display data easily.
 - In `<script>` part, you can see all the javascript logic to get data or trigger the API. 
 
@@ -82,5 +76,3 @@ Back API is available at `localhost:8080/apidathena` and front app is running on
 ## Authors
 
 * **Théomé Borck** - *Technical test* - [Github Repo](https://github.com/theomeb/technical-test)
-
-You can check my trello board that I used to make this project - [Trello Project](https://trello.com/b/3A9mFMes/test-full-stack-dathena)

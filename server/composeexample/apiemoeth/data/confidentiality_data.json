@@ -1,0 +1,32 @@
+[
+  {
+    "id": "1",
+    "name": "Top Secret",
+    "total_docs": 53096
+  },
+  {
+    "id": "2",
+    "name": "Secret",
+    "total_docs": 67964
+  },
+  {
+    "id": "3",
+    "name": "Confidential",
+    "total_docs": 194374
+  },
+  {
+    "id": "4",
+    "name": "Internal",
+    "total_docs": 107742
+  },
+  {
+    "id": "5",
+    "name": "Public",
+    "total_docs": 20038
+  },
+  {
+    "id": "6",
+    "name": "Private",
+    "total_docs": 3
+  }
+]
