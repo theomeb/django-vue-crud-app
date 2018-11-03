@@ -14,7 +14,7 @@ Pull this repo
 ```
 mkdir test && cd test
 git init
-git remote add origin git@github.com:theomeb/technical-test.git
+git remote add origin git@github.com:theomeb/django-vue-crud-app.git
 git pull origin master
 ```
 
