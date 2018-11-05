@@ -72,6 +72,7 @@ The database consists in three tables that gather data on document type, on lang
     - Either with authentication or with token between front and back, because today everybody can init the database for example.
     - Make a restricted CORS policy could also improve the security.
 
+**Any ideas, suggestions, improvements ? Feel free to open a PR !**
 
 ## Authors
 
