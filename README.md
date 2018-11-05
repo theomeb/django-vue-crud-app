@@ -1,7 +1,7 @@
 # Base application template
 ## Dockerized Django REST back - VueJS front
 
-You often need to have a init template to launch a basic application which uses a front UI which displays data fetched from a back framework. Looking for this kind of template on Google, I didn't find what I needed, so I created it.
+You often need to have a init template to launch a basic application which uses a front UI displaying data fetched from a back framework. Looking for this kind of template on Google, I didn't find what I needed, so I created it.
 
 In the following lines, I'll explain how you can launch my app and how it is structured. 
 
